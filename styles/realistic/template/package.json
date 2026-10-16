@@ -1,0 +1,22 @@
+{
+  "name": "explainer-video-realistic-template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "explainer-video 拟真出镜竖屏模板（Remotion）——REA 那期的完整工程",
+  "scripts": {
+    "stills": "node render.mjs stills",
+    "video": "node render.mjs video",
+    "preview": "node render.mjs video preview"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.0",
+    "@remotion/renderer": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  }
+}

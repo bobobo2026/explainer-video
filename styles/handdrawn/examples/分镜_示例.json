@@ -1,0 +1,244 @@
+{
+ "duration": 40.3,
+ "fps": 30,
+ "size": [
+  1920,
+  1080
+ ],
+ "标题": "第二种：本地 Harness",
+ "高亮": [
+  {
+   "text": "Harness",
+   "role": "A"
+  },
+  {
+   "text": "整台电脑",
+   "role": "B"
+  }
+ ],
+ "字幕强调": [
+  "马具",
+  "下命令",
+  "等结果",
+  "更快"
+ ],
+ "marks": [
+  {
+   "name": "第二种",
+   "cue": 1,
+   "phrase": "第二种"
+  },
+  {
+   "name": "电脑",
+   "cue": 2,
+   "phrase": "电脑"
+  },
+  {
+   "name": "Codex",
+   "cue": 3,
+   "phrase": "Codex"
+  },
+  {
+   "name": "Claude",
+   "cue": 3,
+   "phrase": "Claude"
+  },
+  {
+   "name": "Harness",
+   "cue": 4,
+   "phrase": "Harness"
+  },
+  {
+   "name": "马具",
+   "cue": 5,
+   "phrase": "马具"
+  },
+  {
+   "name": "烈马",
+   "cue": 6,
+   "phrase": "烈马"
+  },
+  {
+   "name": "烈马2",
+   "cue": 7,
+   "phrase": "烈马"
+  },
+  {
+   "name": "工具",
+   "cue": 8,
+   "phrase": "工具"
+  },
+  {
+   "name": "马具2",
+   "cue": 9,
+   "phrase": "马具"
+  },
+  {
+   "name": "看到",
+   "cue": 11,
+   "phrase": "看到"
+  },
+  {
+   "name": "文件",
+   "cue": 11,
+   "phrase": "文件"
+  },
+  {
+   "name": "项目",
+   "cue": 11,
+   "phrase": "项目"
+  },
+  {
+   "name": "动手",
+   "cue": 12,
+   "phrase": "动手"
+  },
+  {
+   "name": "复制",
+   "cue": 13,
+   "phrase": "复制"
+  },
+  {
+   "name": "下命令",
+   "cue": 14,
+   "phrase": "下命令"
+  },
+  {
+   "name": "等结果",
+   "cue": 15,
+   "phrase": "等结果"
+  },
+  {
+   "name": "PPT",
+   "cue": 16,
+   "phrase": "PPT"
+  },
+  {
+   "name": "Excel",
+   "cue": 16,
+   "phrase": "Excel"
+  },
+  {
+   "name": "文件夹",
+   "cue": 16,
+   "phrase": "文件夹"
+  },
+  {
+   "name": "C盘",
+   "cue": 17,
+   "phrase": "C盘"
+  },
+  {
+   "name": "代码",
+   "cue": 17,
+   "phrase": "代码"
+  },
+  {
+   "name": "浏览器",
+   "cue": 17,
+   "phrase": "浏览器"
+  },
+  {
+   "name": "怎么用电脑",
+   "cue": 18,
+   "phrase": "怎么用电脑"
+  },
+  {
+   "name": "都能做",
+   "cue": 19,
+   "phrase": "都能做"
+  },
+  {
+   "name": "更快",
+   "cue": 20,
+   "phrase": "更快"
+  },
+  {
+   "name": "一扇窗",
+   "cue": 21,
+   "phrase": "一扇窗"
+  },
+  {
+   "name": "那现在",
+   "cue": 22,
+   "phrase": "那现在"
+  },
+  {
+   "name": "整台电脑",
+   "cue": 23,
+   "phrase": "整台电脑"
+  },
+  {
+   "name": "交给",
+   "cue": 23,
+   "phrase": "交给"
+  }
+ ],
+ "shots": [
+  {
+   "id": 1,
+   "cues": [
+    1,
+    2,
+    3
+   ],
+   "title": "第二种"
+  },
+  {
+   "id": 2,
+   "cues": [
+    4,
+    5,
+    6
+   ],
+   "title": "Harness"
+  },
+  {
+   "id": 3,
+   "cues": [
+    7,
+    8,
+    9
+   ],
+   "title": "烈马与马具"
+  },
+  {
+   "id": 4,
+   "cues": [
+    10,
+    11,
+    12
+   ],
+   "title": "能看见能动手"
+  },
+  {
+   "id": 5,
+   "cues": [
+    13,
+    14,
+    15
+   ],
+   "title": "下命令等结果"
+  },
+  {
+   "id": 6,
+   "cues": [
+    16,
+    17,
+    18,
+    19,
+    20
+   ],
+   "title": "什么都能做"
+  },
+  {
+   "id": 7,
+   "cues": [
+    21,
+    22,
+    23
+   ],
+   "title": "整台电脑"
+  }
+ ]
+}

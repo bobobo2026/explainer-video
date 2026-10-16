@@ -1,0 +1,22 @@
+{"music": "pluck96", "whoosh_on_scene_change": true,
+ "cues": [
+  {"type":"tick","at":[0,"二十四万"],"off":-0.2,"until":0.93,"every":0.06}, {"type":"ding","at":[0,"二十四万"],"off":0.75},
+  {"type":"scratch","at":[0,"二十四万"],"off":1.2}, {"type":"pop","at":[1,"火"]}, {"type":"stamp","last_words":[1,3]},
+  {"type":"swish","at":[2,"Reverse"]}, {"type":"swish","at":[2,"Engineer"]}, {"type":"swish","at":[2,"Anything"]}, {"type":"stamp","at":[2,"逆向"]},
+  {"type":"pop","at":[4,"没有菜谱"]}, {"type":"scratch","at":[4,"没有菜谱"],"off":0.15}, {"type":"pop","at":[4,"大厨"]}, {"type":"pop","at":[4,"说出"],"repeat":6,"every":0.133},
+  {"type":"pop","at":[5,"你手里"]}, {"type":"pop","at":[5,"没有源代码"]}, {"type":"pop","at":[6,"倒推"],"off":0.4}, {"type":"swish","at":[6,"从成品"]}, {"type":"ding","at":[6,"从成品"],"off":0.47},
+  {"type":"pop","at":[7,"满屏"]}, {"type":"pop","at":[7,"专家"]}, {"type":"click","at":[7,"好几"],"repeat":5,"every":0.233},
+  {"type":"pop","scene":"plug"}, {"type":"pop","at":[8,"AI助手"],"off":-0.13}, {"type":"pop","at":[8,"Ghidra"],"repeat":3,"every":0.167}, {"type":"swish","at":[8,"接到"]},
+  {"type":"pop","at":[9,"Claude"]}, {"type":"pop","at":[9,"Codex"]}, {"type":"pop","at":[9,"Cursor"]},
+  {"type":"click","chars":[10,"帮我"],"off":0.12}, {"type":"swish","at":[10,"类似的"],"off":0.6},
+  {"type":"pop","at":[11,"去拆"]}, {"type":"ding","at":[11,"去追"]}, {"type":"ding","at":[11,"最后"]}, {"type":"ding","at":[11,"最后"],"off":0.3},
+  {"type":"pop","at":[11,"结论"]}, {"type":"pop","at":[11,"证据"]}, {"type":"pop","at":[11,"不确定"]}, {"type":"stamp","at":[12,"不靠猜"]}, {"type":"scratch","at":[12,"出处"]},
+  {"type":"pop","at":[13,"普通"]}, {"type":"pop","at":[13,"网页"]}, {"type":"pop","at":[13,"Electron"]}, {"type":"pop","at":[13,"安卓"]}, {"type":"pop","at":[13,"固件"]}, {"type":"pop","at":[13,"网络"]},
+  {"type":"pop","at":[13,"抓包"],"off":0.2,"repeat":4,"every":0.1}, {"type":"swish","at":[14,"本地"],"off":-0.1}, {"type":"scratch","at":[14,"不会上传"],"off":0.13},
+  {"type":"pop","scene":"case","off":-0.03},
+  {"type":"tick","at":[16,"三千"],"until":1.33,"every":0.07}, {"type":"ding","at":[16,"三千"],"off":1.35},
+  {"type":"tick","at":[16,"六十三"],"until":0.87,"every":0.05}, {"type":"stamp","at":[16,"一模一样"]}, {"type":"ding","at":[16,"一模一样"],"off":0.1},
+  {"type":"click","scene":"install","off":-0.03,"repeat":20,"every":0.0533}, {"type":"ding","scene":"install","off":0.98,"repeat":4,"every":0.2}, {"type":"ding","scene":"install","off":1.71},
+  {"type":"pop","scene":"warn","off":-0.03}, {"type":"pop","at":[18,"只分析"]}, {"type":"pop","at":[18,"遵守"]},
+  {"type":"pop","scene":"cta","off":-0.1}, {"type":"pop","at":[19,"点个"],"off":-0.27}, {"type":"pop","at":[19,"点个"],"off":-0.1}, {"type":"ding","at":[19,"关注"]}
+ ]}

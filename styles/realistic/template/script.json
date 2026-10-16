@@ -1,0 +1,22 @@
+[
+ {"scene":"hook","say":"半年时间，二十四万颗星。","show":"半年时间，24 万颗星","pause":0.35},
+ {"scene":"hook","say":"这是最近 GitHub 上最火的项目之一，名字就三个字母：R，E，A。","show":"最近 GitHub 最火的项目之一：REA","pause":0.3},
+ {"scene":"name","say":"全称 Reverse Engineer Anything，逆向一切。","show":"Reverse Engineer Anything · 逆向一切","pause":0.45},
+ {"scene":"dish","say":"逆向是什么？打个比方。","show":"逆向是什么？打个比方","pause":0.25},
+ {"scene":"dish","say":"你在餐厅吃到一道好菜，没有菜谱，但大厨尝一口，就能说出放了哪些料。","show":"没有菜谱，大厨尝一口就知道放了什么料","pause":0.35},
+ {"scene":"app","say":"软件也一样。你手里只有装好的 App，没有源代码。","show":"软件也一样：只有成品 App，没有源代码","pause":0.25},
+ {"scene":"app","say":"逆向，就是从成品，倒推出它是怎么做出来的。","show":"逆向 = 从成品倒推做法","pause":0.4},
+ {"scene":"old","say":"以前这活儿，只有专家能干。对着满屏的汇编，一看就是好几天。","show":"以前：专家对着满屏汇编，一看好几天","pause":0.4},
+ {"scene":"plug","say":"REA 做的事情很简单：把 Ghidra、IDA 这些专业工具，接到你的 AI 助手上。","show":"REA：把专业逆向工具，接到你的 AI 助手上","pause":0.25},
+ {"scene":"plug","say":"Claude Code、Codex、Cursor，都能直接用。","show":"Claude Code、Codex、Cursor 都能用","pause":0.4},
+ {"scene":"chat","say":"你只要说一句：帮我搞清楚这个 App 的搜索功能是怎么做的，给我证据，再给我做一个类似的。","show":"你只要说一句话","pause":0.3},
+ {"scene":"work","say":"AI 就会自己去拆、去追代码，最后把结论、证据，还有不确定的地方，一起交给你。","show":"结论 + 证据 + 不确定的地方，一起交给你","pause":0.25},
+ {"scene":"work","say":"不靠猜，每个结论都有出处。","show":"不靠猜，每个结论都有出处","pause":0.45},
+ {"scene":"scope","say":"它能分析的东西也很多：普通程序、网页、Electron 应用、安卓 APK，甚至固件和网络抓包。","show":"程序、网页、Electron、安卓 APK、固件、抓包…","pause":0.25},
+ {"scene":"scope","say":"而且分析都在你电脑本地进行，REA 不会上传你的 App。","show":"本地分析，不上传你的 App","pause":0.45},
+ {"scene":"case","say":"官方案例里，它还原了一款老游戏 DX Ball 的声音算法。","show":"官方案例：还原老游戏 DX-Ball 的声音算法","pause":0.25},
+ {"scene":"case","say":"三千两百多个原版测试全部通过，编译出来的六十三个字节，和原版一模一样。","show":"3205 个测试全过，63 个字节一模一样","pause":0.45},
+ {"scene":"install","say":"想试试？一行命令就能装好。","show":"一行命令装好","pause":0.4},
+ {"scene":"warn","say":"提醒一句：只分析你有权分析的软件，遵守许可协议和法律。","show":"只分析你有权分析的软件","pause":0.45},
+ {"scene":"cta","say":"你最想拆解哪个 App 的功能？评论区告诉我。点个关注，下期见。","show":"你最想拆解哪个 App 的功能？","pause":0.8}
+]

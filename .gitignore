@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+out/
+stills/
+final/
+*.wav
+*.mp4
+*.log
+__pycache__/
