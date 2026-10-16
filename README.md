@@ -1,101 +1,191 @@
-# explainer-video（v3）
+# explainer-video
 
-把**一个话题 / 一个开源项目 / 一个知识点**做成中文科普短视频的 Agent Skill：口播 + 逐字字幕 + 配乐音效 + 混音，直接能发抖音 / 小红书 / B站 / 视频号 / X。
+**An Agent Skill that turns a topic, an open-source project, or an idea into a finished Chinese explainer short video** — narration, word-level captions, music, sound effects, a mixed master, a quality rubric, and per-platform copy included.
 
-一套共用流程，两种画风：
+[English](README.md) · [简体中文](README.zh-CN.md) · [Docs site](https://bobobo2026.github.io/explainer-video/) · [llms.txt](https://bobobo2026.github.io/explainer-video/llms.txt)
 
-| | 手绘笔记 `styles/handdrawn/` | 拟真出镜 `styles/realistic/` |
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Agent Skill](https://img.shields.io/badge/Agent%20Skill-SKILL.md-orange.svg)](SKILL.md)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-green.svg)](https://bobobo2026.github.io/explainer-video/)
+![Version](https://img.shields.io/badge/version-v3-lightgrey.svg)
+
+---
+
+## What is explainer-video?
+
+`explainer-video` is a reusable **Agent Skill**: a folder containing a `SKILL.md` entry point, a shared production pipeline, runnable Python/Shell scripts, and two complete art-style engines. Drop the folder into your agent's skills directory, and the agent can produce a publish-ready Chinese explainer video end to end — from topic research to the final mixed MP4 and the Douyin / Xiaohongshu / Bilibili / WeChat Channels / X captions.
+
+It is **not** a text-to-video model. The visuals are real code (React/Remotion compositions and Canvas/whiteboard scenes) driven by a word-level narration timeline, so every frame is deterministic, editable, and re-renderable — swap the voice track and the animation, sound effects, and captions re-align automatically.
+
+- **Two art styles, one pipeline:** hand-drawn whiteboard (16:9) and photoreal talking-head vertical (1080×1920).
+- **Word-level timing is the spine:** a single `timeline.json` (`{scene, say, start, end, words[], mouth}`) drives captions, animation cues, SFX and mouth shapes.
+- **Agent-native:** designed to be copied whole into a skills directory — no service, no API keys required (unless you want premium TTS).
+
+## Two art styles
+
+| | Hand-drawn whiteboard `styles/handdrawn/` | Photoreal talking-head `styles/realistic/` |
 |---|---|---|
-| 样子 | 白纸、钢笔线、马克笔，边说边画 | 出镜主播（口型同步）+ 真实截图 + 手绘圈注 + 手持微晃 + 胶片颗粒 |
-| 适合 | 抽象概念、方法论、「X 是什么」 | 热点项目、产品/工具介绍、带数据的新闻 |
-| 画幅 | 1920×1080（有竖屏补丁） | 1080×1920 原生竖屏 |
-| 引擎 | dashi-animationstyle（Canvas） | Remotion（React），`template/` 可直接渲染 |
+| Look | Paper, pen lines, marker fills; drawn while the narrator speaks | On-camera presenter (lip-synced) + real screenshots + hand-drawn callouts + handheld drift + film grain |
+| Best for | Abstract concepts, methodology, "what is X" | Trending projects, product/tool intros, data-driven news |
+| Aspect | 1920×1080 (vertical patch included) | **1080×1920 native vertical** |
+| Engine | [dashi-animationstyle](https://github.com/chuspeeism/dashi-animationstyle) (Canvas) | [Remotion](https://github.com/remotion-dev/remotion) (React) — template renders as-is |
 
-<br>
-
-| 拟真出镜 · 参考成片联系表 |
+| Photoreal vertical · reference contact sheet (REA episode) |
 |---|
-| ![拟真出镜参考帧](styles/realistic/reference/00_联系表.jpg) |
+| ![Photoreal vertical reference frames](styles/realistic/reference/00_联系表.jpg) |
 
-| 手绘笔记 · 参考成片联系表 |
+| Hand-drawn whiteboard · reference contact sheet |
 |---|
-| ![手绘笔记参考帧](styles/handdrawn/assets/reference/00_整片联系表.jpg) |
+| ![Hand-drawn whiteboard reference frames](styles/handdrawn/assets/reference/00_整片联系表.jpg) |
 
-## 包含什么
+## Key facts
 
-- `SKILL.md`：入口（选画风 → 研究 → 写稿 → 配音时间轴 → 画面 → 质检 → 混音 → 交付 + 文案）
-- `core/`：两种风格通用的方法、评分表、各平台文案模板和脚本
-  - `creative-method.md` 结构和比喻库 · `quality-rubric.md` 评分表 · `platform-copy.md` 文案模板
-  - `scripts/tts_timeline.py` TTS → 逐字时间轴 · `voice_to_timeline.py` 真人录音自动对齐 · `audio_bed.py` 配乐音效 · `mix.sh` 混音 · `contact_sheet.sh` 抽帧联系表 · `check_env.sh` 环境检查
-- `styles/realistic/`：拟真出镜竖屏。REA 那期的完整 Remotion 工程当模板（13 个场景拆成可复用部件）+ 16 张参考帧 + 「想表达什么就改哪个场景」对照表 + 踩坑记录
-- `styles/handdrawn/`：手绘白板。部件库 + 示例分镜 + API 速查 + 渲染脚本 + 参考帧
-- `examples/rea/`：拟真风格完整案例（`script.json` + 各平台文案）
+| | |
+|---|---|
+| Skill version | v3 (single skill, two styles) |
+| Reusable scenes in the vertical template | 13 (`hook` → `cta`) |
+| Reference frames shipped | 16 photoreal + 19 hand-drawn |
+| Target episode length | 60–120 s |
+| Real-voice word alignment accuracy | ≈95% of characters matched, median error ≈0.04 s (faster-whisper, word-level) |
+| Master loudness | −14 LUFS integrated, −1.5 dBTP, music ducked under voice |
+| Music beds | `pluck96` (modern plucked) and `lofi84` (gentle lofi) |
+| Render cost | ≈3.7 s wall-clock per 1 s of video (Remotion, concurrency 2) |
+| Quality gate | 9-item rubric; any dimension below 2/5 does not ship |
+| License | MIT |
 
-## 这套流程解决的事
+## How it works
 
-1. **真人录音自动对齐**：录好口播交给它，自动对到每个字的时刻，画面和音效跟着走，不用改代码（实测约 95% 的字能对上，中位误差约 0.04 秒）。
-2. **音效按「哪句话的哪个词」设定**：换配音不用手动重新卡点。
-3. **开工前先检查环境**：`check_env.sh` 当场报出缺的字体、配音库、渲染器，按 `SKILL.md` 的步骤补完再开工。
-4. **静帧质检评分表**：事实、字幕、真人感、真实素材、质感、竖屏安全区，任一项低于 2 分不交付。
+1. **Pick a style** — the agent asks, or recommends from your goal.
+2. **Research and fact-check** — numbers, quotes and screenshots are collected with sources and dates before any writing.
+3. **Write the script** — `script.json`, spoken-colloquial sentences (≤20 characters each), hook in the first 3 seconds.
+4. **Narration → word-level timeline** — your own recording (`voice_to_timeline.py`), premium TTS, or `edge-tts` as a free fallback; output is `voice.wav` + `timeline.json`.
+5. **Visuals** — one idea per shot, visuals cued to the exact word (`wf(sentence, 'word')` in Remotion, `M('word')` in whiteboard).
+6. **Quality check** — stills from every scene are tiled into a contact sheet and really looked at; scored against `core/quality-rubric.md`.
+7. **Music, SFX and mix** — SFX are anchored to "word *k* of sentence *i*" in `cues.json`, so replacing the narration never breaks the timing; `mix.sh` ducks music under voice and normalizes to −14 LUFS.
+8. **Delivery** — final MP4 plus 抖音 / 小红书 / B站 (with chapter timestamps) / 视频号 / X copy.
 
-## 安装
+## Install
 
-复制**整个文件夹**（只拷 `SKILL.md` 不行，脚本和模板都在别的目录里）：
+Copy the **whole folder** (copying only `SKILL.md` will not work — the scripts and templates live in the sibling directories):
 
 ```bash
 # Claude Code / Codex
-cp -r explainer-video ~/.claude/skills/     # 或 ~/.codex/skills/
+cp -r explainer-video ~/.claude/skills/     # or ~/.codex/skills/
 
 # DeepSeek Harness
 cp -r explainer-video ~/.dsh/skills/
 ```
 
-然后跑一次环境检查，必须看到 ✓：
+Then run the environment check — you must see ✓:
 
 ```bash
-bash core/scripts/check_env.sh realistic   # 或 handdrawn
+bash core/scripts/check_env.sh realistic   # or: handdrawn
 ```
 
-准备环境（一次性；云端沙盒重置后要重跑）：
+One-time environment setup (re-run after a cloud sandbox reset):
 
 ```bash
-pip3 install numpy edge-tts faster-whisper     # faster-whisper 可选：真人录音字级对齐
+pip3 install numpy edge-tts faster-whisper     # faster-whisper is optional: word-level alignment for real recordings
 mkdir -p ~/.fonts && curl -L -o ~/.fonts/LXGWWenKai-Medium.ttf \
   https://github.com/lxgw/LxgwWenKai/releases/latest/download/LXGWWenKai-Medium.ttf && fc-cache -f
-# 还需要：ffmpeg、node 18+、Noto Sans SC、Noto Color Emoji
+# also required: ffmpeg, node 18+, Noto Sans SC, Noto Color Emoji
 ```
 
-拟真风格在模板目录装渲染依赖（`styles/realistic/template/package.json` 已列好）：
+Photoreal style: install the render dependencies (already declared in `styles/realistic/template/package.json`):
 
 ```bash
 cd styles/realistic/template && npm install
 ```
 
-## 用法
+## Usage
 
-把文件夹放进 skills 目录后，直接对 Agent 说：**「用 explainer-video 做一条讲 XX 的竖屏视频」**，它会按 `SKILL.md` 的七步走完。
+Once the folder sits in your skills directory, just tell the agent:
 
-## 已知边界
+> Use explainer-video to make a vertical video about *&lt;topic / repo&gt;*.
 
-- 配音首选真人录音，其次是 MiniMax / 豆包 / ElevenLabs 等高质量 TTS；`edge-tts` 只是免费兜底，用户普遍觉得「太 AI」，交付时要主动说明。
-- 首次渲染会下载 Chrome Headless Shell（约 114MB），需要联网；97 秒的片子大约渲染 6 分钟。
-- 云端浏览器的 IP 通常在海外，登录国内平台发布会显示「IP属地：海外」还可能触发风控，建议在本地发布。
-- 涉及逆向、爬虫、安全这类选题时，稿子里要加合规提醒，只分析用户有权分析的对象。
+The agent then follows the seven steps in `SKILL.md`. To swap the presenter, replace the SVG parts in the `Host` component (or supply a photo/AI avatar as one neutral mouth base plus three mouth-openness sprites and one blink sprite) — lip sync keeps working because it is driven by `timeline.mouth`.
 
-## 许可与致谢
+## Repository layout
 
-本仓库以 [MIT](LICENSE) 许可发布。
+```
+SKILL.md              entry point: style → research → script → voice+timeline → visuals → QA → mix → delivery
+core/                 shared across both styles
+  creative-method.md    structure, metaphor library, colloquial-writing rules
+  quality-rubric.md     9-dimension scoring sheet
+  platform-copy.md      per-platform caption templates
+  scripts/              check_env.sh · tts_timeline.py · voice_to_timeline.py · audio_bed.py · mix.sh · contact_sheet.sh
+styles/realistic/     GUIDE.md · template/ (complete Remotion project, 13 scenes) · reference/ (16 frames)
+styles/handdrawn/     GUIDE.md · assets/ (widget library + reference frames) · examples/ · references/ · scripts/
+examples/rea/         the reference photoreal episode: script.json + platform copy
+tools/                repo tooling: docs generator helpers (not needed to make videos)
+docs/                 GitHub Pages site
+```
 
-- 手绘风格依赖 [chuspeeism/dashi-animationstyle](https://github.com/chuspeeism/dashi-animationstyle)（MIT），本仓库不包含其源码，按其 `GUIDE.md` 自行 clone。
-- 拟真风格基于 [Remotion](https://github.com/remotion-dev/remotion)（Remotion License，商用需遵守其条款）。
-- 字体：霞鹜文楷 / Noto Sans SC / Noto Color Emoji，各自遵循其原始许可。
+## FAQ
 
-## v3 相对 v2 的变化
+**What exactly is explainer-video?**
+It is an Agent Skill — a folder with a `SKILL.md` plus scripts, templates and reference frames — that an AI coding agent loads to produce Chinese explainer short videos end to end.
 
-- 合并为一个 skill，加入「拟真出镜」风格（原生竖屏）
-- 新增 `voice_to_timeline.py`：真人录音自动对齐到逐字时间轴，画面和音效不用改
-- 新增通用 `audio_bed.py`：音效锚在「第 i 句的某个词」上，有两种配乐
-- 评分表增加了事实、字幕、真人感、真实素材、质感、竖屏安全区几项
-- 新增各平台文案模板
+**Which agents can run it?**
+Any agent that supports skill folders, including Claude Code, Codex, and DeepSeek Harness (DSH). The reference episodes were produced with DeepSeek v4.1-flash running on DeepSeek Harness.
 
-> 由 Notion AI 在制作《AI的三种形态》（手绘）和《REA 逆向一切》（拟真竖屏）时总结而成。
+**Do I need a paid TTS service?**
+No. `edge-tts` is the free fallback and ships word-level timestamps; premium TTS (MiniMax, Doubao/Volcano, ElevenLabs) or your own recording simply produces better "human feel".
+
+**Can I use my own recorded narration?**
+Yes, and it is the recommended option. `core/scripts/voice_to_timeline.py` aligns a phone recording to the word level. Measured on the reference episode: ≈95% of characters matched, median error ≈0.04 s. If `faster-whisper` is absent it falls back to silence-based sentence splitting with in-sentence distribution by character count.
+
+**Does swapping the narration break the animation or the sound effects?**
+No. Animation cues are anchored to *words* (`wf(sentence,'word')`) and SFX are anchored to *word k of sentence i* in `cues.json`, so a new take re-aligns automatically — no code edits.
+
+**Is the video generated by a text-to-video model?**
+No. Frames are rendered from real code: Remotion (React) compositions for the photoreal style, Canvas scenes for the whiteboard style. That makes output deterministic, reviewable and re-renderable, and it lets real screenshots and product UI appear pixel-accurate.
+
+**What are the hard dependencies?**
+`ffmpeg`, Node 18+, Python 3 with `numpy`, the Noto Sans SC and Noto Color Emoji fonts, and LXGW WenKai for handwriting annotations. The photoreal template additionally needs Remotion packages; the whiteboard style needs a clone of dashi-animationstyle. `core/scripts/check_env.sh` reports exactly what is missing.
+
+**How long does rendering take?**
+About 3.7 seconds of wall-clock per second of video with concurrency 2 — roughly 6 minutes for a 97-second episode. The first render downloads the Chrome Headless Shell (~114 MB).
+
+**Which platforms is the output made for?**
+Douyin, Xiaohongshu, Bilibili, WeChat Channels and X. The vertical template keeps content inside platform safe areas (right-side button column, bottom caption zone) and ships caption templates per platform.
+
+**Is it free to use?**
+Yes, MIT licensed. Note that Remotion has its own license terms for commercial use, and the fonts and dashi-animationstyle keep their original licenses.
+
+**How is this different from a generic AI video generator?**
+Generic generators synthesize pixels from a prompt. `explainer-video` writes and renders a real composition with a fact-checked script and exact word-level sync, so you can fix a single wrong frame, reuse the 13 scene components, and re-render after changing the narration.
+
+## Limitations
+
+- Narration: real recordings first, premium TTS second, `edge-tts` only as a fallback — it is free and word-timed but sounds synthetic, and the skill is instructed to say so at delivery.
+- The first render downloads a Chrome Headless Shell (~114 MB) and needs network access.
+- Cloud browser IPs are usually overseas, so logging in to Chinese platforms from a sandbox shows "IP location: overseas" and may trip risk control — publish from your own machine.
+- For reverse-engineering, scraping or security topics, the script must include a compliance reminder and only analyze software you are allowed to analyze.
+
+## Citation
+
+If you use this work in writing, cite it via [`CITATION.cff`](CITATION.cff):
+
+```bibtex
+@software{explainer_video_2026,
+  author  = {bobobo2026},
+  title   = {explainer-video: an Agent Skill for Chinese explainer short videos},
+  year    = {2026},
+  version = {3.0.0},
+  license = {MIT},
+  url     = {https://github.com/bobobo2026/explainer-video}
+}
+```
+
+## Credits and license
+
+Released under the [MIT License](LICENSE).
+
+- Whiteboard style depends on [chuspeeism/dashi-animationstyle](https://github.com/chuspeeism/dashi-animationstyle) (MIT). Its source is not bundled here — clone it as described in `styles/handdrawn/GUIDE.md`.
+- Photoreal style is built on [Remotion](https://github.com/remotion-dev/remotion) (Remotion License — see its terms for commercial use).
+- Fonts: LXGW WenKai, Noto Sans SC, Noto Color Emoji, each under its own license.
+
+Summarized by Notion AI while producing two reference episodes: *《AI的三种形态》* (whiteboard) and *《REA 逆向一切》* (photoreal vertical).
+
+If this skill saves you time, a ⭐ helps other creators find it.

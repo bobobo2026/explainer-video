@@ -4,6 +4,17 @@
   "private": true,
   "type": "module",
   "description": "explainer-video 拟真出镜竖屏模板（Remotion）——REA 那期的完整工程",
+  "keywords": [
+    "explainer-video",
+    "remotion",
+    "vertical-video",
+    "talking-head",
+    "short-video",
+    "chinese",
+    "douyin",
+    "xiaohongshu",
+    "video-template"
+  ],
   "scripts": {
     "stills": "node render.mjs stills",
     "video": "node render.mjs video",

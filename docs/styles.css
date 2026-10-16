@@ -1,0 +1,65 @@
+:root {
+  --ink: #16130f;
+  --ink-soft: #4a4238;
+  --cream: #f7f2e8;
+  --paper: #fffdf8;
+  --orange: #e8622c;
+  --line: #e3d9c6;
+  --sans: "Inter", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--cream); color: var(--ink);
+  font-family: var(--sans); font-size: 17px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--orange); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.top { border-bottom: 1px solid var(--line); background: rgba(247,242,232,.92); position: sticky; top: 0; backdrop-filter: blur(8px); z-index: 5; }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-weight: 700; letter-spacing: -.01em; }
+.brand span { color: var(--orange); }
+nav a { margin-left: 18px; font-size: 15px; color: var(--ink-soft); }
+nav a:hover { color: var(--orange); }
+.hero { padding: 64px 0 24px; }
+h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -.03em; margin: 0 0 18px; }
+h1 em { font-style: normal; color: var(--orange); }
+.lede { font-size: clamp(18px, 2.4vw, 22px); color: var(--ink-soft); max-width: 44ch; margin: 0 0 28px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
+.btn { display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 16px; border: 1.5px solid var(--ink); color: var(--ink); }
+.btn.primary { background: var(--ink); color: var(--cream); }
+.btn:hover { text-decoration: none; opacity: .86; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 40px 0 8px; }
+.stats div { background: var(--paper); padding: 18px 20px; }
+.stats b { display: block; font-size: 26px; letter-spacing: -.02em; }
+.stats small { color: var(--ink-soft); font-size: 13.5px; }
+section { padding: 40px 0; border-top: 1px solid var(--line); }
+h2 { font-size: clamp(24px, 3.4vw, 32px); letter-spacing: -.02em; margin: 0 0 8px; }
+h3 { font-size: 19px; margin: 28px 0 6px; }
+p, li { color: var(--ink-soft); }
+strong { color: var(--ink); }
+pre { background: #1d1a16; color: #f3ece0; padding: 16px 18px; border-radius: 12px; overflow-x: auto; font-family: var(--mono); font-size: 13.5px; line-height: 1.55; }
+code { font-family: var(--mono); font-size: .93em; }
+:not(pre) > code { background: #efe7d7; padding: .1em .4em; border-radius: 5px; color: var(--ink); }
+figure { margin: 22px 0; }
+figure img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
+figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15.5px; margin: 12px 0; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink); font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
+details { border-bottom: 1px solid var(--line); padding: 12px 0; }
+summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+details p { margin: 8px 0 4px; }
+ol.steps { counter-reset: s; list-style: none; padding: 0; }
+ol.steps li { counter-increment: s; padding-left: 46px; position: relative; margin-bottom: 14px; }
+ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; font-size: 14px; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 32px 0 56px; font-size: 14.5px; color: var(--ink-soft); }
+footer a { color: var(--orange); }
+.lang { font-size: 14.5px; }
+@media (max-width: 620px) { nav a { margin-left: 12px; } .hero { padding-top: 40px; } }

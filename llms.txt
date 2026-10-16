@@ -1,0 +1,33 @@
+# explainer-video
+
+> explainer-video is a reusable Agent Skill (a folder with a `SKILL.md` entry point, runnable scripts and templates) that turns a topic, an open-source project, or an idea into a finished Chinese explainer short video: research and fact-checking, colloquial script, narration with word-level timing, visuals, music and sound effects, a mixed master at −14 LUFS, and per-platform copy. It is not a text-to-video model — frames are rendered from real code, so output is deterministic and re-editable.
+
+Two art styles share one pipeline:
+- Hand-drawn whiteboard, 1920×1080, Canvas engine (dashi-animationstyle).
+- Photoreal talking-head vertical, 1080×1920, Remotion (React) template with 13 reusable scenes.
+
+Key facts:
+- Real-voice word alignment: ≈95% of characters matched, median error ≈0.04 s (faster-whisper word-level).
+- Animation cues are anchored to words and sound effects to "word k of sentence i", so replacing the narration never breaks the timing.
+- Quality gate: 9-dimension rubric; any dimension below 2/5 does not ship.
+- Render cost: ≈3.7 s wall-clock per 1 s of video (concurrency 2). Master loudness −14 LUFS / −1.5 dBTP.
+- License: MIT. Works with Claude Code, Codex and DeepSeek Harness.
+
+## Docs
+
+- [README (English)](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/README.md): full documentation, install steps, FAQ.
+- [README (简体中文)](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/README.zh-CN.md): 中文文档、安装步骤与常见问题。
+- [SKILL.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/SKILL.md): the agent-facing entry point and the seven-step pipeline.
+- [core/creative-method.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/core/creative-method.md): script structure, metaphor library, colloquial-writing rules.
+- [core/quality-rubric.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/core/quality-rubric.md): the nine-dimension scoring sheet.
+- [core/platform-copy.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/core/platform-copy.md): Douyin / Xiaohongshu / Bilibili / WeChat Channels / X caption templates.
+- [styles/realistic/GUIDE.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/styles/realistic/GUIDE.md): photoreal vertical style, scene-to-intent mapping table, pitfalls.
+- [styles/handdrawn/GUIDE.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/styles/handdrawn/GUIDE.md): hand-drawn whiteboard style.
+- [examples/rea/README.md](https://raw.githubusercontent.com/bobobo2026/explainer-video/main/examples/rea/README.md): the reference episode walkthrough.
+- [llms-full.txt](https://bobobo2026.github.io/explainer-video/llms-full.txt): every document above concatenated into one plain-text file.
+
+## Source
+
+- Repository: https://github.com/bobobo2026/explainer-video
+- Documentation site: https://bobobo2026.github.io/explainer-video/
+- License: MIT — https://github.com/bobobo2026/explainer-video/blob/main/LICENSE

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use explainer-video in your work, please cite it as below."
+type: software
+title: "explainer-video: an Agent Skill for Chinese explainer short videos"
+abstract: >-
+  explainer-video is a reusable Agent Skill that turns a topic, an open-source project,
+  or an idea into a finished Chinese explainer short video. It ships a shared production
+  pipeline (topic research and fact-checking, colloquial script writing, narration to
+  word-level timeline, music/SFX design and mixing, a nine-dimension quality rubric, and
+  per-platform copy templates) plus two art styles: a hand-drawn whiteboard engine and a
+  photoreal vertical talking-head template built on Remotion with thirteen reusable scenes.
+authors:
+  - name: bobobo2026
+version: 3.0.0
+date-released: 2026-10-16
+license: MIT
+repository-code: https://github.com/bobobo2026/explainer-video
+url: https://bobobo2026.github.io/explainer-video/
+keywords:
+  - agent-skill
+  - explainer-video
+  - short-video
+  - ai-video
+  - remotion
+  - text-to-speech
+  - forced-alignment
+  - whiteboard-animation
+  - talking-head
+  - chinese
+  - claude-code
+  - codex
+  - deepseek
+  - douyin
+  - xiaohongshu
+  - bilibili

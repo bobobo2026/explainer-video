@@ -1,0 +1,29 @@
+# explainer-video
+
+> explainer-video is a reusable Agent Skill that turns a topic, an open-source project, or an idea into a finished Chinese explainer short video. One shared pipeline; two art styles: hand-drawn whiteboard (1920×1080, Canvas) and photoreal vertical talking-head (1080×1920, Remotion, 13 reusable scenes). Real-voice narration is aligned to the word level (≈95% of characters matched, ≈0.04 s median error); animation cues and sound effects are anchored to words, so replacing the voice take never breaks the timing. Quality gate: 9-dimension rubric. Master loudness −14 LUFS. MIT licensed. Works with Claude Code, Codex and DeepSeek Harness.
+
+Key facts:
+- Version v3 (v2 was named handdrawn-explainer-video).
+- Stages: research and fact-checking → colloquial script (`script.json`) → narration to word-level timeline → visuals → stills-based quality check → music/SFX and mix → delivery with per-platform copy.
+- Platforms: Douyin, Xiaohongshu, Bilibili, WeChat Channels, X.
+- Render cost ≈3.7 s wall-clock per 1 s of video (Remotion, concurrency 2); first render downloads a Chrome Headless Shell (~114 MB).
+- Not a text-to-video model: frames are rendered from real code, so output is deterministic, editable and re-renderable.
+
+## Docs
+
+- [English documentation](README.md): full install, usage, FAQ and limitations.
+- [中文文档](README.zh-CN.md): 安装、用法、常见问题与已知边界。
+- [SKILL.md](SKILL.md): the agent-facing entry point and seven-step pipeline.
+- [core/creative-method.md](core/creative-method.md): script structure, metaphor library, colloquial-writing rules.
+- [core/quality-rubric.md](core/quality-rubric.md): the nine-dimension scoring sheet.
+- [core/platform-copy.md](core/platform-copy.md): caption templates per platform.
+- [styles/realistic/GUIDE.md](styles/realistic/GUIDE.md): photoreal vertical style, scene-to-intent table, pitfalls, presenter replacement.
+- [styles/handdrawn/GUIDE.md](styles/handdrawn/GUIDE.md): hand-drawn whiteboard style.
+- [examples/rea/README.md](examples/rea/README.md): reference episode walkthrough.
+- [llms-full.txt](llms-full.txt): all documents above concatenated into a single plain-text file.
+
+## Source
+
+- Repository: https://github.com/bobobo2026/explainer-video
+- HTML documentation: https://bobobo2026.github.io/explainer-video/
+- License: MIT
